@@ -2,7 +2,13 @@
 
 Um projeto simples em C que implementa uma "To-Do List" (Lista de Tarefas) básica, rodando no terminal. A aplicação utiliza a estrutura de dados **Pilha (Stack)** para gerenciar os itens da lista.
 
-Este projeto foi criado como um exercício prático para demonstrar o uso de pilhas em C, gerenciamento de memória (`malloc`/`free`) e manipulação de ponteiros.
+Este projeto foi criado como um exercício prático da faculdade para demonstrar o uso de pilhas em C, gerenciamento de memória (`malloc`/`free`) e manipulação de ponteiros.
+
+Alunos: 
+João Manoel Freire
+João Pedro Magalhães
+Rafael Maia
+Leonardo Freitas Barboza
 
 ## O Conceito da Pilha (LIFO)
 
