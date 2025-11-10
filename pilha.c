@@ -27,7 +27,8 @@ void push(Pilha* pi, const char* texto){
 }
 
 char* pop(Pilha* pi){
-    if (estaVazia(pi)){
+    // Corrigido para usar a nova função
+    if (estaVazia(pi)){ 
         return NULL;
     }
 
@@ -41,7 +42,8 @@ char* pop(Pilha* pi){
 }
 
 void display(Pilha* pi){
-    if (estaVazia(pi)){
+    // Corrigido para usar a nova função
+    if (estaVazia(pi)){ 
         printf("Pilha Vazia\n");
         return;
     }
@@ -58,7 +60,8 @@ void display(Pilha* pi){
 void limparPilha(Pilha* pi){
     if (pi == NULL) return;
 
-    while (!estaVazia(pi)){
+    // Corrigido para usar a nova função
+    while (!estaVazia(pi)){ 
         char* texto = pop(pi);
         
         if (texto != NULL){
@@ -67,9 +70,10 @@ void limparPilha(Pilha* pi){
     }
 }
 
+// Nova função implementada
 int estaVazia(Pilha* pi) {
     if (pi == NULL) {
-        return 1;
+        return 1; // Uma pilha nula pode ser considerada "vazia"
     }
     return (pi->topo == NULL); 
 }
@@ -79,6 +83,7 @@ void limpar_buffer(){
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+// Nova função implementada
 int contarItens(Pilha* pi){
     if (estaVazia(pi)) {
         return 0;
