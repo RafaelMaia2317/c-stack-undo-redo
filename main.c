@@ -8,7 +8,10 @@ int main() {
 
     do {
         system(LIMPAR_TELA);
-        printf("\n--- Lista de tarefas (Pilha) ---\n");
+        
+        int total_itens = contarItens(todo_list);
+        printf("\n--- Lista de tarefas (Itens: %d) ---\n", total_itens);
+
         printf("----------------------------------\n");
         printf("1. Adicionar novo item\n");
         printf("2. Concluir ultimo item (Pop)\n");
@@ -29,7 +32,7 @@ int main() {
                 printf("--- Adicionar Novo Item ---\n");
                 printf("Digite o item a fazer: ");
                 
-                scanf("%[^\n]", buffer); 
+                scanf("%[^\n]", buffer);
                 limpar_buffer();
 
                 push(todo_list, buffer);
@@ -43,16 +46,15 @@ int main() {
                 break;
             }
             
-            case 2: { // Concluir ultimo item (Pop)
+            case 2: {
                 system(LIMPAR_TELA);
                 
-                char* item_concluido = pop(todo_list);
-
-                if (item_concluido == NULL) {
+                if (estaVazia(todo_list)) {
                     printf("\n--------------------------------------\n");
                     printf("Parabens! Sua lista esta vazia.\n");
                     printf("--------------------------------------\n");
                 } else {
+                    char* item_concluido = pop(todo_list);
                     printf("\n--------------------------------------\n");
                     printf("Item concluido: %s\n", item_concluido);
                     printf("--------------------------------------\n");
@@ -84,7 +86,7 @@ int main() {
                 system(LIMPAR_TELA);
                 printf("--- Todos os Itens na Lista ---\n");
                 
-                display(todo_list); 
+                display(todo_list);
                 
                 printf("\n----------------------------------\n");
                 printf("\nAperte <ENTER> para voltar.");
@@ -92,26 +94,17 @@ int main() {
                 break;
             }
 
-             case 5:{ 
-                system(LIMPAR_TELA);
-                printf("--- Contagem de Itens ---\n");
-                int qtd = contarItens(todo_list);
-                printf("\nA lista possui %d item(ns).\n", qtd);
-                printf("\nAperte <ENTER> para voltar.");
-                getchar();
-                break;
-            }
-
-            case 6:{
+            case 5:{
                 system(LIMPAR_TELA);
                 printf("Saindo e limpando a memoria...\n");
                 break;
             }
+
             default:{
                 system(LIMPAR_TELA);
-                printf("Erro");
+                printf("\n----------------Erro---------------------\n");
                 printf("Opcao invalida. Tente novamente.\n");
-                
+                printf("-----------------------------------------\n");
                 
                 printf("\nAperte <ENTER> para voltar.");
                 getchar();
@@ -120,8 +113,8 @@ int main() {
 
     } while (opcao != 5);
     
-    limparPilha(todo_list); 
-    free(todo_list);        
+    limparPilha(todo_list);
+    free(todo_list);
 
     printf("Programa finalizado.\n");
     return 0;

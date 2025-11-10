@@ -20,18 +20,13 @@ typedef struct Pilha{
     No* topo;
 } Pilha;
 
-
-// Protótipos das funções
 Pilha* criar_pilha();
-
-void push(Pilha* pi, const char* texto);   // Empilhar
-char* pop(Pilha* pi);                      // Desempilhar
-void display(Pilha* pi);                   // Imprime o conteúdo da pilha
-void limparPilha(Pilha* pi);               // Esvazia a pilha
-void limpar_buffer();
-
+void push(Pilha* pi, const char* texto);
+char* pop(Pilha* pi);
+void display(Pilha* pi);
+void limparPilha(Pilha* pi);
 int estaVazia(Pilha* pi);
-
+void limpar_buffer();
 int contarItens(Pilha* pi);
 
 #endif

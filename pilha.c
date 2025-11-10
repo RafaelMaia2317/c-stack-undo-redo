@@ -15,7 +15,7 @@ void push(Pilha* pi, const char* texto){
 
     if (novo_no == NULL) return;
 
-    novo_no->texto = strdup(texto);
+    novo_no->texto = strdup(texto); 
     if (novo_no->texto == NULL) {
         perror("Erro ao duplicar string para a pilha");
         free(novo_no);
@@ -27,7 +27,7 @@ void push(Pilha* pi, const char* texto){
 }
 
 char* pop(Pilha* pi){
-    if (pi == NULL || pi->topo == NULL){
+    if (estaVazia(pi)){
         return NULL;
     }
 
@@ -35,13 +35,13 @@ char* pop(Pilha* pi){
     char* texto_retornado = no_remover->texto;
     pi->topo = no_remover->prox;
 
-    free(no_remover);
+    free(no_remover); 
 
     return texto_retornado;
 }
 
 void display(Pilha* pi){
-    if (pi == NULL || pi->topo == NULL){
+    if (estaVazia(pi)){
         printf("Pilha Vazia\n");
         return;
     }
@@ -58,7 +58,7 @@ void display(Pilha* pi){
 void limparPilha(Pilha* pi){
     if (pi == NULL) return;
 
-    while (pi->topo != NULL){
+    while (!estaVazia(pi)){
         char* texto = pop(pi);
         
         if (texto != NULL){
@@ -67,17 +67,23 @@ void limparPilha(Pilha* pi){
     }
 }
 
+int estaVazia(Pilha* pi) {
+    if (pi == NULL) {
+        return 1;
+    }
+    return (pi->topo == NULL); 
+}
+
 void limpar_buffer(){
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-int estaVazia(Pilha* pi){
-    return (pi == NULL || pi->topo == NULL);
-}
-
 int contarItens(Pilha* pi){
-    if (pi == NULL) return 0;
+    if (estaVazia(pi)) {
+        return 0;
+    }
+    
     int count = 0;
     No* atual = pi->topo;
     while (atual != NULL){
